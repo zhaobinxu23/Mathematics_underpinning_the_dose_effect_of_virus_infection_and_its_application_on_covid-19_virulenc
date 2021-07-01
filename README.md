@@ -1,2 +1,3 @@
 # Mathematics_underpinning_the_dose_effect_of_virus_infection_and_its_application_on_covid-19_virulenc
 Mathematics_underpinning_the_dose_effect_of_virus_infection_and_its_application_on_covid-19_virulence_evolution
+Run the corresponding codes to plot the figures. For details, you can contact zhaobinxu@gmail.com
