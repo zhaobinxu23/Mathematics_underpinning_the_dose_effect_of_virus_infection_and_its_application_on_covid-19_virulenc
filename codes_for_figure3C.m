@@ -1,0 +1,134 @@
+
+clc
+clear
+
+%% modeling individual behavior(weak immunity with c2 = 0.0018) .
+num_c_valve = 0;
+for kkk = 1: 5000
+    kkk
+    for iii = 1:10
+       s(1,iii)  = struct('replication_cycle',10,'waiting_time',0,'time',0);
+    end
+
+count_number = 10; %% initial virus number = 10
+input_number = 10;
+for i = 1:100  %% virus generations
+    i;
+    k = count_number;
+    number = 0;
+    for j = 1:k  %%virus population per generation
+    time_phage = 10;%% we chose 10min as time interval
+    d = rand; %% 
+    A = s(i,j);
+    if d <= (0.60-(0.0018)*i) %% this number = d;
+         
+        if time_phage+s(i,j).waiting_time >= 10 
+         
+
+       
+     
+         s(i+1,number+1).replication_cycle = 10;
+
+     
+         s(i+1,number+1).waiting_time = 0; 
+
+         s(i+1,number+1).time = (10*(i+1));
+         
+        
+
+         s(i+1,number+2).replication_cycle = 10;
+
+
+         s(i+1,number+2).waiting_time = 0;
+         s(i+1,number+2).time = (10*(i+1));
+         number = number+2;
+        else
+
+        
+         s(i+1,number+1).replication_cycle = 10;
+         s(i+1,number+1).waiting_time = 10 + A.waiting_time ;
+         s(i+1,number+1).time = (10*(i+1));
+         number = number+1;
+        end
+    else 
+    end
+    end
+    count_number = number;
+    ddd(i) = count_number;
+end
+
+matrix_weak(input_number,kkk) = max(ddd);
+clear ddd
+end
+
+
+
+save('matrix_for_figure_3C_weak_imm','matrix_weak');
+
+
+clc
+clear
+
+%% modeling individual behavior(strong immunity with c2 = 0.002) .
+num_c_valve = 0;
+for kkk = 1: 5000
+    kkk
+    for iii = 1:10
+       s(1,iii)  = struct('replication_cycle',10,'waiting_time',0,'time',0);
+    end
+
+count_number = 10; %% initial virus number = 10
+input_number = 10;
+for i = 1:100  %% virus generations
+    i;
+    k = count_number;
+    number = 0;
+    for j = 1:k  %%virus population per generation
+    time_phage = 10;%% we chose 10min as time interval
+    d = rand; %% 
+    A = s(i,j);
+    if d <= (0.60-(0.002)*i) %% this number = d;
+         
+        if time_phage+s(i,j).waiting_time >= 10 
+         
+
+       
+     
+         s(i+1,number+1).replication_cycle = 10;
+
+     
+         s(i+1,number+1).waiting_time = 0; 
+
+         s(i+1,number+1).time = (10*(i+1));
+         
+        
+
+         s(i+1,number+2).replication_cycle = 10;
+
+
+         s(i+1,number+2).waiting_time = 0;
+         s(i+1,number+2).time = (10*(i+1));
+         number = number+2;
+        else
+
+        
+         s(i+1,number+1).replication_cycle = 10;
+         s(i+1,number+1).waiting_time = 10 + A.waiting_time ;
+         s(i+1,number+1).time = (10*(i+1));
+         number = number+1;
+        end
+    else 
+    end
+    end
+    count_number = number;
+    ddd(i) = count_number;
+end
+
+matrix_strong(input_number,kkk) = max(ddd);
+clear ddd
+end
+
+
+
+save('matrix_for_figure_3C_strong_imm','matrix_strong');
+
